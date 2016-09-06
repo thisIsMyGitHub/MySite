@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Moodify</title>
+        <title>Stabilize</title>
         <!--Boostrap's CSS-->
         <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
         <!--Custom CSS-->
@@ -10,28 +10,54 @@
     <body>
         <div class="container" id="page-container">
             <h1 id="app-name">
-                <span class="glyphicon glyphicon-headphones"></span> moodify
+                My Site
             </h1>
-            <!-- NB: glyphicon halflings are generally not free, but the developer made them free in bootstrap -->
+            
 
             <h2 id="page-header">
-                Get song recommendations based on your mood.
+                Do stuff With your videos!
             </h2>
             <div class="btn-wrapper">
                 <label class="btn btn-info" for="my-file-selector">
                     <input id="my-file-selector" type="file">
-                    Upload a picture of you
+                    Upload a Shaky Video
                 </label>
-                <button type="button" class="btn btn-info" id="refreshbtn">Another song please</button>
             </div>
         </div>
-        <!-- 
-            NB: You generally do not want to publically expose the server structure (eg. ./node_modules/...)
-            will sort that in later bootcamps with task-runners and the like.
-            For now this is just a demonstration.
-
-            Alternatively can use CDNs for bootstrap/jquery
-        -->
+		
+		
+		
+		
+		
+		<div class="container" >
+		  <div class="row">
+			<div class="col-sm-4">
+			  
+			  
+			    <div class="btn-wrapper" align="center" >
+                <label class="btn btn-info">
+                    Face Detection
+                </label> </div>
+				<p align="center" >Analyze videos with high precision face location detection and tracking to detect up to 64 human faces in a video. </p>
+			</div>
+			<div class="col-sm-4">
+			 
+			   			    <div class="btn-wrapper" align="center" >
+                <label class="btn btn-info">
+                    Stabilize your Videos
+                </label> </div>
+				 <p  align="center" >Automatically smooth and stabilize shaky videos using many of the same technologies found in Microsoft Hyperlapse. </p>
+			</div>
+			<div class="col-sm-4">
+			  
+			   			    <div class="btn-wrapper" align="center" >
+                <label class="btn btn-info">
+                    Motion Detection
+                </label> </div>
+				<p  align="center"> Detect when motion has occurred in videos with stationary backgrounds </p>
+			</div>
+		  </div>
+		</div>
 
         <!--jQuery Script-->
         <script src="./node_modules/jquery/dist/jquery.min.js"></script>
