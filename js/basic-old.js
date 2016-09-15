@@ -1,41 +1,41 @@
-/// <reference path="C:\Users\navil\Desktop\programs\MSA\MySite\typings\globals\jquery\index.d.ts" />
-
 var pageheader = $("#page-header")[0]; 
 var pagecontainer = $("#page-container")[0]; 
-var imgSelector = $("#my-file-selector");  
+var imgSelector = $("#my-file-selector"); 
 //var refreshbtn = $("#refreshbtn"); 
 
 
-function processImage(callback) : void {
-    var file = imgSelector.get(0).files[0];   
-    var reader = new FileReader();
+function processImage(callback) {
+    var file = imgSelector.get(0).files[0]; 
+     var reader = new FileReader();
     if (file) {
         reader.readAsDataURL(file); 
-    } else {
+    }
+    else {
         console.log("Invalid file");
     }
-    reader.onloadend = function () { 
-        //After loading the file it checks if extension is jpg or png and if it isnt it lets the user know.
-        if (!file.name.match(/\.(jpg|jpeg|png)$/)){
+    reader.onloadend = function () {
+    
+        if (!file.name.match(/\.(jpg|jpeg|png)$/)) {
             pageheader.innerHTML = "Please upload an image file (jpg or png).";
-        } else {
-            //if file is photo it sends the file reference back up
+        }
+        else {
+        
             callback(file);
         }
-    }
+    };
 }
 
 
 
-function changeUI(cap):void{
-    
+function changeUI(cap) {
+    //Show detected mood
     pageheader.innerHTML = "" + cap 
 
 }
 
 
 
-    function EmotionRequest(file, callback): void {
+    function sendRequest(file, callback) {
     $.ajax({
         url: "https://api.projectoxford.ai/vision/v1.0/describe?maxCandidates=1",
         beforeSend: function (xhrObj) {
@@ -48,7 +48,7 @@ function changeUI(cap):void{
         processData: false
     })
         .done(function (data) {
-            if (data.description.length != 0) { // if a face is detected
+            if (data.description.length != 0) { 
                 
                 var cap = data.description.captions[0].text;
                 callback(cap);
@@ -62,10 +62,10 @@ function changeUI(cap):void{
         });
 }
 imgSelector.on("change", function () {
-    pageheader.innerHTML = "Analysing the Image"; 
-    processImage(function (file) { //this checks the extension and file
+    pageheader.innerHTML = "Analysing the Image..."; 
+    processImage(function (file) { 
 	
-        EmotionRequest(file, function (capp) { 
+        sendRequest(file, function (capp) { 
 
             changeUI(capp); 
 
